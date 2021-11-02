@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
 
-export default function WelcomeScreen(){
+export default function WelcomeScreen({navigation}){
 
     let [fontsLoaded] = useFonts({
         Lato_700Bold, Lato_400Regular
@@ -16,7 +16,7 @@ export default function WelcomeScreen(){
         <View style={styles.container}>
 
             <Text style={styles.welcomeText}>
-                Sell what you don't need
+                VINTED
             </Text>
 
             <Image 
@@ -25,26 +25,18 @@ export default function WelcomeScreen(){
                 resizeMode="contain"/>
 
 
-            <Pressable style={styles.buttonStyle} onPress={onLogIn}>
-                <Text style={styles.buttonText}>Log in</Text>
+            <Pressable style={styles.defaultButton} onPress={() => {navigation.navigate('SignUp')}}>
+                <Text style={styles.defaultButtonText}>Sign up for Vinted</Text>
             </Pressable>
 
-            <Pressable style={styles.buttonStyle} onPress={onSignIn}>
-                <Text style={styles.buttonText}>Sign in</Text>
+            <Pressable style={[styles.defaultButton, styles.logInButton]} onPress={() => {navigation.navigate('LogIn')}}>
+                <Text style={[styles.defaultButtonText, styles.logInButtonText]}>I already have an account</Text>
             </Pressable>
 
         </View>
 
     )
 
-}
-
-const onLogIn = () => {
-    console.log('loggin in...');
-}
-
-const onSignIn = () => {
-    console.log('signing in...');
 }
 
 const styles = StyleSheet.create({
@@ -61,9 +53,10 @@ const styles = StyleSheet.create({
     welcomeText: {
 
         marginTop: 20,
-        fontSize: 28,
+        fontSize: 70,
         letterSpacing: .8,
         fontFamily: "Lato_700Bold",
+        color: "#fff"
 
     },
 
@@ -77,10 +70,11 @@ const styles = StyleSheet.create({
 
     },
 
-    buttonStyle: {
+    defaultButton: {
 
         alignItems: 'center',
         justifyContent: 'center',
+        width: 380,
         paddingVertical: 12,
         paddingHorizontal: 30,
         borderRadius: 13,
@@ -90,12 +84,22 @@ const styles = StyleSheet.create({
 
     },
 
-    buttonText: {
+    logInButton: {
+        backgroundColor: '#fff',
+        borderWidth: 1.5,
+        borderColor: '#00a4ff'
+    },
+
+    defaultButtonText: {
         fontSize: 20,
         lineHeight: 21,
-        letterSpacing: 1,
-        color: 'white',
+        letterSpacing: 0,
+        color: '#fff',
         fontFamily: 'Lato_400Regular'
+    },
+
+    logInButtonText: {
+        color: '#00a4ff'
     }
 
 });
