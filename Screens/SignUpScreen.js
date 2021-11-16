@@ -21,10 +21,10 @@ export default function SignUpScreen(){
         Database.addUser(username, password, SignUpCallback);
     }
 
-    const SignUpCallback = (success) => {
+    const SignUpCallback = (success, userID) => {
 
         if(success)
-            navigation.navigate('HomeScreen', { username: username, password: password, signup: true })
+            navigation.navigate('HomeScreen', { username: username, password: password, signup: true, userID: userID });
         else showErrorToast();
 
     }

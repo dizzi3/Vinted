@@ -14,13 +14,16 @@ export default function HomeScreen(props){
     const { username, password, signup } = props.route.params;
     
     React.useLayoutEffect(() => {
-        //TODO: for testing purposes only, delete on release
-        Database.printAllUsers();
 
         if(signup !== undefined && signup === true)
             showSignUpSuccessToast();
 
-    } );
+    });
+
+    //TODO: for testing purposes only, delete on release
+    React.useEffect(() => {
+        Database.printAllUsers();
+    }, [] );
 
     const showSignUpSuccessToast = () => {
 
@@ -28,9 +31,25 @@ export default function HomeScreen(props){
             title: 'Sign up',
             type: ALERT_TYPE.SUCCESS,
             textBody: 'Successfully created your account! =)',
-            autoClose: 3500,
+            autoClose: false,
             onPress: () => { Toast.hide(); }
         });
+
+    }
+
+    const LogOut = () => {
+        props.navigation.navigate('WelcomeScreen');
+    }
+
+    const MyProducts = () => {
+        props.navigation.navigate('MyProducts', { userID: props.route.params.userID });
+    }
+
+    const BrowseProducts = () => {
+        
+    }
+
+    const ListAProduct = () => {
 
     }
     
@@ -45,6 +64,22 @@ export default function HomeScreen(props){
                 <Text style={styles.logo}>
                     VINTED
                 </Text>
+
+                <Pressable style={styles.defaultButton} onPress={BrowseProducts}>
+                    <Text style={styles.defaultButtonText}>Browse products</Text>
+                </Pressable>
+
+                <Pressable style={styles.defaultButton} onPress={ListAProduct}>
+                    <Text style={styles.defaultButtonText}>List a product</Text>
+                </Pressable>
+
+                <Pressable style={styles.defaultButton} onPress={MyProducts}>
+                    <Text style={styles.defaultButtonText}>My products</Text>
+                </Pressable>
+
+                <Pressable style={styles.defaultButton} onPress={LogOut}>
+                    <Text style={styles.defaultButtonText}>Log out</Text>
+                </Pressable>
 
             </View>
         </Root>
@@ -73,6 +108,28 @@ const styles = StyleSheet.create({
         fontFamily: "Lato_700Bold",
         color: "#fff"
 
-    }
+    },
+
+    defaultButton: {
+
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 350,
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 13,
+        elevation: 2,
+        backgroundColor: '#00a4ff',
+        marginTop: 15
+
+    },
+
+    defaultButtonText: {
+        fontSize: 20,
+        lineHeight: 21,
+        letterSpacing: 0,
+        color: '#fff',
+        fontFamily: 'Lato_400Regular'
+    },
 
 })

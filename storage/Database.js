@@ -30,8 +30,7 @@ class Database{
                     return;
                 }
 
-                console.log('Logged in user: ' + rows._array[0].username); 
-                callback(true);
+                callback(true, rows._array[0].id);
             },
             (_, { error }) => { 
                 console.log('An error occured while selecting user from database!');
@@ -49,10 +48,7 @@ class Database{
         db.transaction(async (tx) => {
             tx.executeSql(`insert into ${USERS_TABLE_NAME} (username, password) values (?,?)`,
                         [username, password],
-                        (_, { result }) => { 
-                            console.log('successfully inserted ' + username + ' into database');
-                            callback(true);
-                        },
+                        (_, result) => {  callback(true, result.insertId); },
                         (_, error) => { 
                             console.log('error while inserting user into database!');
                             callback(false);
@@ -76,7 +72,17 @@ class Database{
         db.transaction((tx) => {
             tx.executeSql(`select * from ${USERS_TABLE_NAME}`,
             [],
-            (_, {rows} ) => { console.log('Users: ' + JSON.stringify(rows)); },
+            (_, {rows} ) => { 
+
+                console.log('\nUsers:\n-----------------------------------------------------');
+                for(let i = 0; i < rows.length; i++)
+                    console.log('[' + rows._array[i].id + '] ' + rows._array[i].username +
+                     ' : ' + rows._array[i].password);
+
+                console.log('-----------------------------------------------------\n');
+
+                //console.log('Users: ' + JSON.stringify(rows)); 
+            },
             (_, error) => { console.log('An error occured while selecting all users from database'); })
         })
     }

@@ -21,10 +21,10 @@ export default function LogInScreen(){
         Database.searchForUser(username, password, LogInCallback);
     }
 
-    const LogInCallback = (success) => {
+    const LogInCallback = (success, userID) => {
 
         if(success)
-            navigation.navigate('HomeScreen', { username: username, password: password })   
+            navigation.navigate('HomeScreen', { username: username, password: password, userID: userID })   
         else{
             Toast.show({
                 title: 'Log in',

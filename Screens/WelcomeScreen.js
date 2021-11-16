@@ -15,7 +15,7 @@ export default function WelcomeScreen({navigation}){
         await Database.createDatabase();
 
         //TODO: clearUsersTable is for testing purposes only, remove on release!
-        await Database.clearUsersTable();
+        //await Database.clearUsersTable();
 
     }, [] );
 
