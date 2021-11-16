@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
+import Database from '../storage/Database';
 
 export default function WelcomeScreen({navigation}){
 
@@ -9,13 +10,22 @@ export default function WelcomeScreen({navigation}){
         Lato_700Bold, Lato_400Regular
     })
 
+    React.useEffect(async () => {
+
+        await Database.createDatabase();
+
+        //TODO: clearUsersTable is for testing purposes only, remove on release!
+        await Database.clearUsersTable();
+
+    }, [] );
+
     if(!fontsLoaded)
         return (<AppLoading/>);
     else return(
 
         <View style={styles.container}>
 
-            <Text style={styles.welcomeText}>
+            <Text style={styles.logo}>
                 VINTED
             </Text>
 
@@ -50,7 +60,7 @@ const styles = StyleSheet.create({
 
     },
 
-    welcomeText: {
+    logo: {
 
         marginTop: 20,
         fontSize: 70,
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
 
         alignItems: 'center',
         justifyContent: 'center',
-        width: 380,
+        width: 350,
         paddingVertical: 12,
         paddingHorizontal: 30,
         borderRadius: 13,
