@@ -6,7 +6,8 @@ const Product = (props) => {
 
     const name = props.name;
     const price = props.price;
-    const size = props.size;
+    const imgSrc = props.imgSrc;
+    const status = props.status;
 
     useFonts({ Lato_700Bold, Lato_400Regular });
 
@@ -16,15 +17,18 @@ const Product = (props) => {
 
             <View style={styles.informationContainer}>
 
-                <Text style={styles.defaultText}>{name}</Text>
-                <Text style={styles.defaultText}>{price}</Text>
-                <Text style={styles.defaultText}>{size}</Text>
+                <Text style={[styles.defaultText, styles.nameStyle]}>{name}</Text>
+                <Text style={[styles.defaultText, styles.priceStyle]}>{price}$</Text>
+                <Text style={[styles.defaultText, 
+                            status === "sold" ? styles.soldStyle : styles.listedStyle]}>
+                    {status}
+                </Text>
 
             </View>
 
             <View style={styles.imageContainer}>
 
-                <Image source={require('./../assets/product_test.jpg')}
+                <Image source={imgSrc}
                         style={styles.imageStyle}
                         resizeMode="contain"/>
 
@@ -42,32 +46,40 @@ const styles = StyleSheet.create({
 
     container: {
 
-        width: "80%",
         height: 170,
         backgroundColor: "#04374a",
         alignItems: "center",
         justifyContent: 'center',
         borderRadius: 12,
-        flexDirection: "row"
+        flexDirection: "row",
+        marginBottom: 10
+    },
 
+    informationContainer: {
+        flex: .5,
+        alignItems: "center",
     },
 
     defaultText: {
-        fontSize: 20,
+        fontSize: 25,
         letterSpacing: 0,
         color: '#fff',
         fontFamily: 'Lato_400Regular',
         padding: 2
     },
 
-    informationContainer: {
-        flex: .5,
-        alignItems: "center",
-        
+    nameStyle: {
+        fontSize: 29,
+        marginBottom: 8,
+        fontFamily:"Lato_700Bold"
+    },
+
+    priceStyle: {
+        color: "#fcfcd4"
     },
 
     imageContainer: {
-        flex: .7,
+        flex: .4,
         padding: 10
     },
 
@@ -75,6 +87,14 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         alignSelf: "stretch",
+    },
+    
+    soldStyle: {
+        color: "#f59e9d"
+    },
+
+    listedStyle: {
+        color: "#00c6ae"
     }
 
 })

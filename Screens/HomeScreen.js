@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text} from 'react-native';
+import { StyleSheet, View, Pressable, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
 import Database from '../storage/Database';
@@ -41,7 +41,7 @@ export default function HomeScreen(props){
         props.navigation.navigate('WelcomeScreen');
     }
 
-    const MyProducts = () => {
+    const MyListings = () => {
         props.navigation.navigate('MyProducts', { userID: props.route.params.userID });
     }
 
@@ -73,11 +73,11 @@ export default function HomeScreen(props){
                     <Text style={styles.defaultButtonText}>List a product</Text>
                 </Pressable>
 
-                <Pressable style={styles.defaultButton} onPress={MyProducts}>
-                    <Text style={styles.defaultButtonText}>My products</Text>
+                <Pressable style={styles.defaultButton} onPress={MyListings}>
+                    <Text style={styles.defaultButtonText}>My listings</Text>
                 </Pressable>
 
-                <Pressable style={styles.defaultButton} onPress={LogOut}>
+                <Pressable style={[styles.defaultButton, styles.logOutButton]} onPress={LogOut}>
                     <Text style={styles.defaultButtonText}>Log out</Text>
                 </Pressable>
 
@@ -131,5 +131,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Lato_400Regular'
     },
+
+    logOutButton: {
+        backgroundColor: "#04374a"
+    }
 
 })
