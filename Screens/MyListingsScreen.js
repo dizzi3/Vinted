@@ -1,36 +1,34 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Pressable, Text, ScrollView, Dimensions} from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
-import Database from '../storage/Database';
 import Product from '../Components/Product';
-
+ 
 export default function MyListingsScreen(props){
-
+ 
     let [fontsLoaded] = useFonts({
         Lato_700Bold, Lato_400Regular
     })
-
-    const { userID } = props.route.params;
-
-    React.useEffect(() => {
-        
-    }, [] );
-    
-
+ 
+    const products = props.route.params?.listedProducts !== null ? props.route?.params?.listedProducts?.map((product) => 
+            <Product key={product.photoUri} name={product.name} price={product.price} 
+                                status={product.status} imgSrc={{uri: product.photoUri}}/>) : <></>
+ 
     if(!fontsLoaded)
         return (<AppLoading/>);
     else return(
-
+ 
         <View style={styles.container}>
-
+ 
             <Text style={styles.header}>
                 My listings
             </Text>
-
-
+ 
             <View style={{height: 675}}>
                 <ScrollView style={styles.scroll}>
+ 
+                    {products}
+ 
                     <Product name="Suit" price="999" status="sold" imgSrc={require("./../assets/1.jpg")}/>
                     <Product name="Hoodie" price="150" status="sold" imgSrc={require("./../assets/2.jpg")}/>
                     <Product name="Sneakers" price="380" status="listed" imgSrc={require("./../assets/3.jpg")}/>
@@ -41,39 +39,40 @@ export default function MyListingsScreen(props){
                     <Product name="T-Shirt" price="49" status="listed" imgSrc={require("./../assets/8.jpg")}/>
                     <Product name="Hat" price="99" status="listed" imgSrc={require("./../assets/9.jpg")}/>
                     <Product name="T-Shirt" price="149" status="sold" imgSrc={require("./../assets/10.jpg")}/>
+ 
                 </ScrollView>
             </View>
             
-
+ 
         </View>
-
+ 
     )
-
+ 
 }
-
+ 
 const styles = StyleSheet.create({
-
+ 
     container: {
-
+ 
         flex: 1,
         backgroundColor: "#aed6ef",
         alignItems: "center",
         justifyContent: 'center',
-
+ 
     },
-
+ 
     header: {
-
+ 
         marginTop: 50,
         fontSize: 40,
         letterSpacing: 1,
         fontFamily: "Lato_700Bold",
         color: "#fff"
-
+ 
     },
-
+ 
     defaultButton: {
-
+ 
         alignItems: 'center',
         justifyContent: 'center',
         width: 350,
@@ -83,9 +82,9 @@ const styles = StyleSheet.create({
         elevation: 2,
         backgroundColor: '#00a4ff',
         marginTop: 15
-
+ 
     },
-
+ 
     defaultButtonText: {
         fontSize: 20,
         lineHeight: 21,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Lato_400Regular'
     },
-
+ 
     scroll: {
         flex: .1,
         height: 200,
@@ -102,5 +101,5 @@ const styles = StyleSheet.create({
         marginTop: 30,
         borderRadius: 12
     }
-
+ 
 })
