@@ -76,4 +76,62 @@ export default function ListAProductScreen(){
     )
 
 }
+const styles = StyleSheet.create({
+
+    container: {
+
+        flex: 1,
+        backgroundColor: "#aed6ef",
+        alignItems: "center",
+        justifyContent: 'center',
+
+    },
+
+    header: {
+
+        marginTop: 50,
+        fontSize: 40,
+        letterSpacing: 1,
+        fontFamily: "Lato_700Bold",
+        color: "#fff"
+
+    },
+
+    textInput: {
+        height: 45,
+        width: 250,
+        margin: 12,
+        padding: 10,
+        color: "#fff",
+        fontSize: 22,
+        borderBottomColor: "#00a4ff",
+        borderBottomWidth: 2,
+        fontFamily: 'Lato_700Bold',
+        letterSpacing: .2,
+    },
+
+    defaultButton: {
+
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 350,
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 13,
+        elevation: 2,
+        backgroundColor: '#00a4ff',
+        marginTop: 15
+
+    },
+
+    defaultButtonText: { 
+        fontSize: 20,
+        lineHeight: 21,
+        letterSpacing: 0,
+        color: '#fff',
+        fontFamily: 'Lato_400Regular'
+    }
+ 
+})
+       
 
