@@ -1,10 +1,11 @@
 
-import {  View, Text, TextInput} from 'react-native';
+import React, { createRef,useRef} from 'react';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
 import { Camera } from 'expo-camera';
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Pressable, Image} from 'react-native';
 
 export default function ListAProductScreen(){
 
@@ -12,9 +13,8 @@ export default function ListAProductScreen(){
         Lato_700Bold, Lato_400Regular
     })
 
-   
+    const [name, onNameChanged] = useState('');
     const [price, onPriceChanged] = useState('');
-    const [hasPermission, setHasPermission] = useState(null);
     
     const [hasPermission, setHasPermission] = useState(null);
     const camera = useRef(null);

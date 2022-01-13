@@ -6,6 +6,7 @@ import LogInScreen from './Screens/LogInScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import HomeScreen from './Screens/HomeScreen';
 import MyListingsScreen from './Screens/MyListingsScreen';
+import ListAProductScreen from './Screens/ListAProductScreen';
 
 const Stack = createNativeStackNavigator()
 
@@ -42,6 +43,10 @@ export default function App() {
           component={MyListingsScreen}
         />
 
+        <Stack.Screen
+          name="ListAProduct"
+          component={ListAProductScreen}
+        />
 
       </Stack.Navigator>
 
