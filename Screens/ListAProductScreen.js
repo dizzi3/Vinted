@@ -4,7 +4,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
 import { Camera } from 'expo-camera';
 import { useState, useEffect } from 'react';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ListAProductScreen(){
 
@@ -16,6 +16,10 @@ export default function ListAProductScreen(){
     const [price, onPriceChanged] = useState('');
     const [hasPermission, setHasPermission] = useState(null);
     
+    const [hasPermission, setHasPermission] = useState(null);
+    const camera = useRef(null);
+    const [pictureTaken, setPictureTaken] = useState(false);
+    const [photo, setPhoto] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -70,7 +74,55 @@ export default function ListAProductScreen(){
                 keyboardType="visible-password"
             />
 
-            
+{!pictureTaken ? 
+                <Camera style={styles.camera} ref={camera} type={Camera.Constants.Type.back}>
+                    <View>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={async () => {
+                            if (camera) {
+                                let photo = await camera?.current?.takePictureAsync();
+                                await setPhoto(photo);
+                                setPictureTaken(true);
+                            }
+                        }}>
+                        <Text>Take pic</Text>
+                    </TouchableOpacity>
+                    </View>
+                </Camera>
+            : <Image
+            style={styles.image}
+            source={{
+              uri: photo?.uri,
+            }}
+          />}
+ 
+            <Pressable style={styles.defaultButton} onPress={async () => {
+                if(photo && photo.uri){
+ 
+                    try {
+                        let productsJSON = await AsyncStorage.getItem('listed-products')
+                        productsJSON = productsJSON != null ? JSON.parse(productsJSON) : null;
+                        
+                        if(productsJSON === null || productsJSON === '')
+                            productsJSON = JSON.parse('[]');
+ 
+                        productsJSON.push({
+                            'name': name,
+                            'price': price,
+                            'status': 'listed',
+                            'photoUri': photo.uri
+                        })
+ 
+                        await AsyncStorage.setItem('listed-products', JSON.stringify(productsJSON))
+ 
+                    } catch(e) {
+                        console.log(e)
+                    }
+                }
+            }}>
+                <Text style={styles.defaultButtonText}>Add</Text>
+            </Pressable> 
         </View>
 
     )
@@ -130,8 +182,17 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
         color: '#fff',
         fontFamily: 'Lato_400Regular'
-    }
+    },
  
+    camera: {
+        flex: .8,
+        width: '80%',
+    },
+ 
+    image: {
+        width: 300,
+        height: 300
+    }
 })
        
 
