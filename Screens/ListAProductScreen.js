@@ -49,7 +49,7 @@ export default function ListAProductScreen(){
                 placeholder = 'Name'
                 style={styles.textInput}
                 onChangeText={onNameChanged}
-                placeholderTextColor='#fff'
+                placeholderTextColor='#000'
                 underlineColorAndroid='transparent'
                 autoCorrect={false}
                 spellCheck={false}
@@ -67,7 +67,7 @@ export default function ListAProductScreen(){
                     onPriceChanged(buffer + '$');
                 }}
                 value={price}
-                placeholderTextColor='#fff'
+                placeholderTextColor='#000'
                 underlineColorAndroid='transparent'
                 autoCorrect={false}
                 spellCheck={false}
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     container: {
 
         flex: 1,
-        backgroundColor: "#aed6ef",
+        backgroundColor: "#fff0f5",
         alignItems: "center",
         justifyContent: 'center',
 
@@ -142,10 +142,10 @@ const styles = StyleSheet.create({
     header: {
 
         marginTop: 50,
-        fontSize: 40,
+        fontSize: 60,
         letterSpacing: 1,
-        fontFamily: "Lato_700Bold",
-        color: "#fff"
+        fontFamily:"AguafinaScript_400Regular",
+        color: "#ffc0cb"
 
     },
 
@@ -154,11 +154,11 @@ const styles = StyleSheet.create({
         width: 250,
         margin: 12,
         padding: 10,
-        color: "#fff",
+        color: "#000",
         fontSize: 22,
-        borderBottomColor: "#00a4ff",
+        borderBottomColor: "#ffc0cb",
         borderBottomWidth: 2,
-        fontFamily: 'Lato_700Bold',
+        fontFamily: 'Lato_400Regular',
         letterSpacing: .2,
     },
 
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 13,
         elevation: 2,
-        backgroundColor: '#00a4ff',
+        backgroundColor: '#ffc0cb',
         marginTop: 15
 
     },

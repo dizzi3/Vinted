@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, TextInput, View, Pressable, Text, Dimensions} from 'react-native';
 import AppLoading from 'expo-app-loading';
-import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
+import { useFonts, AguafinaScript_400Regular } from '@expo-google-fonts/aguafina-script'
 import { useNavigation } from '@react-navigation/native';
 import Database from '../storage/Database';
 import {Root, Toast, ALERT_TYPE } from 'react-native-alert-notification'
@@ -14,7 +14,7 @@ export default function SignUpScreen(){
     const navigation = useNavigation()
 
     let [fontsLoaded] = useFonts({
-        Lato_700Bold, Lato_400Regular
+        AguafinaScript_400Regular
     })
 
     const SignUp = () => {
@@ -47,14 +47,14 @@ export default function SignUpScreen(){
             <View style={styles.container}>
 
                 <Text style={styles.logo}>
-                    VINTED
+                    Rebecca
                 </Text>
 
                 <TextInput 
                     placeholder = 'Username'
                     style={styles.textInput}
                     onChangeText={onUsernameChanged}
-                    placeholderTextColor='#fff'
+                    placeholderTextColor='#000000'
                     underlineColorAndroid='transparent'
                     autoCorrect={false}
                     spellCheck={false}
@@ -66,7 +66,7 @@ export default function SignUpScreen(){
                     secureTextEntry={true}
                     style={styles.textInput}
                     onChangeText={onPasswordChanged}
-                    placeholderTextColor='#fff'
+                    placeholderTextColor='#000000'
                     underlineColorAndroid='transparent'
                     autoCorrect={false}
                     spellCheck={false}
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "#aed6ef",
+        backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: 'center'
     },
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 70,
         letterSpacing: .8,
-        fontFamily: "Lato_700Bold",
-        color: "#fff",
+        fontFamily: "AguafinaScript_400Regular",
+        color: "#000000",
         marginBottom: 35
     },
 
@@ -108,11 +108,11 @@ const styles = StyleSheet.create({
         width: 250,
         margin: 12,
         padding: 10,
-        color: "#fff",
+        color: "#000000",
         fontSize: 22,
-        borderBottomColor: "#00a4ff",
+        borderBottomColor: "#ffc0cb",
         borderBottomWidth: 2,
-        fontFamily: 'Lato_700Bold',
+        fontFamily: 'Lato_400Regular',
         letterSpacing: .2,
     },
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 13,
         elevation: 2,
-        backgroundColor: '#00a4ff',
+        backgroundColor: '#ffc0cb',
         marginTop: 40
     },
 

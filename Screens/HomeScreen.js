@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import { useFonts, Lato_700Bold, Lato_400Regular } from '@expo-google-fonts/lato'
+import { useFonts, AguafinaScript_400Regular } from '@expo-google-fonts/aguafina-script'
 import Database from '../storage/Database';
 import {Root, Toast, ALERT_TYPE } from 'react-native-alert-notification'
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function HomeScreen(props){
  
     let [fontsLoaded] = useFonts({
-        Lato_700Bold, Lato_400Regular
+        AguafinaScript_400Regular
     })
  
     const { username, password, signup, userID } = props.route.params;
@@ -60,7 +60,7 @@ export default function HomeScreen(props){
             <View style={styles.container}>
  
                 <Text style={styles.logo}>
-                    VINTED
+                    Rebecca
                 </Text>
  
                 <Pressable style={styles.defaultButton} onPress={ListAProduct}>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     container: {
  
         flex: 1,
-        backgroundColor: "#aed6ef",
+        backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: 'center'
  
@@ -108,10 +108,10 @@ const styles = StyleSheet.create({
  
         flex: .3,
         marginTop: 20,
-        fontSize: 70,
+        fontSize: 100,
         letterSpacing: .8,
-        fontFamily: "Lato_700Bold",
-        color: "#fff"
+        fontFamily: "AguafinaScript_400Regular",
+        color: "#000"
  
     },
  
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 13,
         elevation: 2,
-        backgroundColor: '#00a4ff',
+        backgroundColor: '#ffc0cb',
         marginTop: 15
  
     },
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     },
  
     logOutButton: {
-        backgroundColor: "#04374a"
+        backgroundColor: "#ff6781"
     }
  
 })

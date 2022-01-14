@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     container: {
  
         flex: 1,
-        backgroundColor: "#aed6ef",
+        backgroundColor: "#fff0f5",
         alignItems: "center",
         justifyContent: 'center',
  
@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
     header: {
  
         marginTop: 50,
-        fontSize: 40,
+        fontSize: 60,
         letterSpacing: 1,
-        fontFamily: "Lato_700Bold",
-        color: "#fff"
+        fontFamily: "AguafinaScript_400Regular",
+        color: "#ffc0cb"
  
     },
  

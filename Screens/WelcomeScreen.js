@@ -25,18 +25,14 @@ export default function WelcomeScreen({navigation}){
 
         <View style={styles.container}>
 
-            <Text style={styles.logo}>
-                VINTED
-            </Text>
-
             <Image 
-                source={require('./../assets/jordans.jpg')}
+                source={require('./../assets/logo.jpg')}
                 style={styles.welcomeImage}
                 resizeMode="contain"/>
 
 
             <Pressable style={styles.defaultButton} onPress={() => {navigation.navigate('SignUp')}}>
-                <Text style={styles.defaultButtonText}>Sign up for Vinted</Text>
+                <Text style={styles.defaultButtonText}>Sign up for Rebecca</Text>
             </Pressable>
 
             <Pressable style={[styles.defaultButton, styles.logInButton]} onPress={() => {navigation.navigate('LogIn')}}>
@@ -54,19 +50,9 @@ const styles = StyleSheet.create({
     container: {
 
         flex: 1,
-        backgroundColor: "#aed6ef",
+        backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: 'center'
-
-    },
-
-    logo: {
-
-        marginTop: 20,
-        fontSize: 70,
-        letterSpacing: .8,
-        fontFamily: "Lato_700Bold",
-        color: "#fff"
 
     },
 
@@ -89,7 +75,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 13,
         elevation: 2,
-        backgroundColor: '#00a4ff',
+        backgroundColor: '#ffc0cb',
         marginTop: 15
 
     },
@@ -97,7 +83,7 @@ const styles = StyleSheet.create({
     logInButton: {
         backgroundColor: '#fff',
         borderWidth: 1.5,
-        borderColor: '#00a4ff'
+        borderColor: '#ffc0cb'
     },
 
     defaultButtonText: {
@@ -109,7 +95,7 @@ const styles = StyleSheet.create({
     },
 
     logInButtonText: {
-        color: '#00a4ff'
+        color: '#ffc0cb'
     }
 
 });

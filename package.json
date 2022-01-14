@@ -8,8 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/aguafina-script": "^0.2.0",
     "@expo-google-fonts/lato": "^0.2.0",
     "@expo-google-fonts/roboto": "^0.2.0",
+    "@fontsource/aguafina-script": "^4.5.1",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
